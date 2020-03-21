@@ -111,7 +111,7 @@ If updating packages does not solve the problem, set the option in R:
 options(tinytex.verbose = TRUE)
 ```
 before you compile the document. If you are using R Markdown and the Knit button in RStudio, you should set the option in a code chunk in the R Markdown document.
-```{r eval=FALSE}
+```r
 ```{r, include=FALSE}
 options(tinytex.verbose = TRUE)
  ```
