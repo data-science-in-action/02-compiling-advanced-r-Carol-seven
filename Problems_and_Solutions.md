@@ -111,13 +111,13 @@ If updating packages does not solve the problem, set the option in R:
 options(tinytex.verbose = TRUE)
 ```
 before you compile the document. If you are using R Markdown and the Knit button in RStudio, you should set the option in a code chunk in the R Markdown document.
-```r
-```{r, include=FALSE}
+```{r eval=FALSE}
+>```{r, include=FALSE}
 options(tinytex.verbose = TRUE)
-
+>```
+```
 
 You can, and perhaps should, remove this option after you finish debugging (to silence LaTeX, because you no longer need to read the full log).
-
 
 ## xelatex.exe GUI framework cannot be initiallized or xelatex not found
 
@@ -136,6 +136,7 @@ Download or find the required ".sty" file on PC and put it in the 'right' place 
 ```r
 C:\Users\<user name>\Appdata\Local\MikTex\<number>\tex\latex\local\
 ```
+
 ## dev.control() without an open graphics device for `Mac`
 
 Download [*XQuartz*](https://www.xquartz.org), then restart the PC and install the package `Cairo`.
