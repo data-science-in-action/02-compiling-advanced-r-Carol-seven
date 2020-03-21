@@ -114,8 +114,7 @@ before you compile the document. If you are using R Markdown and the Knit button
 ```r
 ```{r, include=FALSE}
 options(tinytex.verbose = TRUE)
- ```
-```
+
 
 You can, and perhaps should, remove this option after you finish debugging (to silence LaTeX, because you no longer need to read the full log).
 
