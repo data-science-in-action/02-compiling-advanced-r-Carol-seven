@@ -95,12 +95,48 @@ biocLite ("autoplot")
 
 ## LaTeX failed to compile
 
-![Image text](https://github.com/data-science-in-action/02-compiling-advanced-r-Carol-seven/blob/master/image/LaTeX_failed_to_compile.PNG)
+See https://yihui.org/tinytex/r/#debugging%20for%20debugging%20tips. 
 
-Download the [*MiKTeX*], and add the path to the system settings. Then click the `setting` in the [*MiKTeX*], choose the `Alwayes install missing package on-the-fly`.
+If an error occurs when compiling a LaTeX to PDF, and the error message is not clear, you may try two things. First, update all your R and LaTeX packages:
+```{r eval=FALSE}
+update.packages(ask = FALSE, checkBuilt = TRUE)  # update R packages
+tinytex::tlmgr_update()  # update LaTeX packages
+```
+If you see an error message like ¡°tlmgr: Remote repository is newer than local (2018 < 2019)¡± when updating LaTeX packages, it means your TinyTeX is too old now, and you need to reinstall it for a newer version:
+```{r eval=FALSE}
+tinytex::reinstall_tinytex()
+```
+If updating packages does not solve the problem, set the option in R:
+```{r eval=FALSE}
+options(tinytex.verbose = TRUE)
+```
+before you compile the document. If you are using R Markdown and the Knit button in RStudio, you should set the option in a code chunk in the R Markdown document.
+```{r eval=FALSE}
+```{r, include=FALSE}
+options(tinytex.verbose = TRUE)
+ ```
+```
+
+You can, and perhaps should, remove this option after you finish debugging (to silence LaTeX, because you no longer need to read the full log).
+
+
+## xelatex.exe GUI framework cannot be initiallized or xelatex not found
+
+![Image text](https://github.com/data-science-in-action/02-compiling-advanced-r-Carol-seven/blob/master/image/xelatex_not_found.PNG)
+
+Download the [*MiKTeX*], and add the path to the system settings. Then click the `setting` in the [*MiKTeX*], choose the `Always install missing package on-the-fly`.
 
 ![Image text](https://github.com/data-science-in-action/02-compiling-advanced-r-Carol-seven/blob/master/image/MiKTeX_settings.PNG)
 
+## ".sty" file could not be found
+
+This problem may be caused by the lack of ".sty" files, or it may be because we do have the ".sty" files in our computer, but it could not be found.
+
+Download or find the required ".sty" file on PC and put it in the 'right' place (`Windows10` and [*MiKTex*]): 
+
+```r
+C:\Users\<user name>\Appdata\Local\MikTex\<number>\tex\latex\local\
+```
 ## dev.control() without an open graphics device for `Mac`
 
 Download [*XQuartz*](https://www.xquartz.org), then restart the PC and install the package `Cairo`.
